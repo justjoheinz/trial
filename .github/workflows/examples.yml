@@ -30,13 +30,13 @@ jobs:
       - uses: actions/checkout@v1
       - name: Build the library
         run: |
-          ros run -- --noinform --dynamic-space-size 2Gb \
+          ros run -- --noinform --dynamic-space-size 4Gb \
                --eval "(push \"$GITHUB_WORKSPACE\" ql:*local-project-directories*)" \
                --eval '(ql:quickload :trial-examples)' \
                --non-interactive
       - name: Build the binary
         run: |
-          ros run -- --noinform --dynamic-space-size 2Gb \
+          ros run -- --noinform --dynamic-space-size 4Gb \
                --eval "(push \"$GITHUB_WORKSPACE\" ql:*local-project-directories*)" \
                --eval '(asdf:make :trial-examples)' \
                --non-interactive
