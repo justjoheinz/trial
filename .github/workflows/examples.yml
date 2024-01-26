@@ -11,7 +11,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            /home/runner/quicklisp
+            /home/runner/.roswell
             /home/runner/.cache/common-lisp
           key: ${{ runner.os }}-ql
       - name: Install Roswell
@@ -24,7 +24,6 @@ jobs:
       - name: Install env
         if: steps.cache-ql.outputs.cache-hit != 'true'
         run: |
-          ros run -- --noinform --eval '(quicklisp-quickstart:install)' --non-interactive
           ros run -- --noinform \
                --eval '(ql-dist:install-dist "http://dist.shirakumo.org/shirakumo.txt" :prompt NIL)' \
                --non-interactive
